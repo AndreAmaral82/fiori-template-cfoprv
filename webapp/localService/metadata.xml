@@ -1,0 +1,76 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZFCI_CDS_CFOPREV_CDS" xml:lang="pt" sap:schema-version="1">
+			<EntityType Name="ZFCI_CDS_CFOPType" sap:label="Código e extensão CFOP" sap:content-version="1">
+				<Key><PropertyRef Name="cfop"/></Key><Property Name="cfop" Type="Edm.String" Nullable="false" MaxLength="10" sap:text="cfop_Text" sap:label="CFOP"
+					sap:quickinfo="Código e extensão CFOP"/><Property Name="cfop_Text" Type="Edm.String" MaxLength="50" sap:label="Descrição" sap:quickinfo="Descrição do CFOP" sap:creatable="false"
+					sap:updatable="false"/></EntityType>
+			<EntityType Name="ZFCI_CDS_CFOPREVType" sap:label="FCI - CFOPS de Revenda" sap:content-version="1">
+				<Key><PropertyRef Name="cfop"/></Key><Property Name="cfop_fc" Type="Edm.Byte" sap:label="Controle campo din." sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="cfop" Type="Edm.String" Nullable="false" MaxLength="10" sap:field-control="cfop_fc" sap:label="Código e extensão CFOP"
+					sap:value-list="standard"/><NavigationProperty Name="to_CFOP" Relationship="ZFCI_CDS_CFOPREV_CDS.assoc_4026009527E35C1B505712C204259343"
+					FromRole="FromRole_assoc_4026009527E35C1B505712C204259343" ToRole="ToRole_assoc_4026009527E35C1B505712C204259343"/></EntityType>
+			<Association Name="assoc_4026009527E35C1B505712C204259343" sap:content-version="1"><End Type="ZFCI_CDS_CFOPREV_CDS.ZFCI_CDS_CFOPREVType" Multiplicity="1" Role="FromRole_assoc_4026009527E35C1B505712C204259343"/><End Type="ZFCI_CDS_CFOPREV_CDS.ZFCI_CDS_CFOPType" Multiplicity="1" Role="ToRole_assoc_4026009527E35C1B505712C204259343"/></Association>
+			<EntityContainer Name="ZFCI_CDS_CFOPREV_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true"
+				sap:supported-formats="atom json xlsx"><EntitySet Name="ZFCI_CDS_CFOP" EntityType="ZFCI_CDS_CFOPREV_CDS.ZFCI_CDS_CFOPType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="ZFCI_CDS_CFOPREV" EntityType="ZFCI_CDS_CFOPREV_CDS.ZFCI_CDS_CFOPREVType" sap:content-version="1"/>
+				<AssociationSet Name="assoc_4026009527E35C1B505712C204259343" Association="ZFCI_CDS_CFOPREV_CDS.assoc_4026009527E35C1B505712C204259343"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZFCI_CDS_CFOPREV" Role="FromRole_assoc_4026009527E35C1B505712C204259343"/><End EntitySet="ZFCI_CDS_CFOP" Role="ToRole_assoc_4026009527E35C1B505712C204259343"/></AssociationSet>
+			</EntityContainer>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFCI_CDS_CFOPREV_CDS.ZFCI_CDS_CFOPREVType/cfop">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Código e extensão CFOP"/><PropertyValue Property="CollectionPath" String="ZFCI_CDS_CFOP"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="cfop"/><PropertyValue Property="ValueListProperty" String="cfop"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="cfop_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFCI_CDS_CFOPREV_CDS.ZFCI_CDS_CFOPREV_CDS_Entities">
+				<Annotation Term="Aggregation.ApplySupported">
+					<Record>
+						<PropertyValue Property="Transformations">
+							<Collection>
+								<String>aggregate</String>
+								<String>groupby</String>
+								<String>filter</String>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Rollup" EnumMember="None"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFCI_CDS_CFOPREV_CDS.ZFCI_CDS_CFOPREV_CDS_Entities/ZFCI_CDS_CFOPREV">
+				<Annotation Term="Capabilities.FilterRestrictions">
+					<Record>
+						<PropertyValue Property="NonFilterableProperties">
+							<Collection>
+								<PropertyPath>cfop_fc</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.SortRestrictions">
+					<Record>
+						<PropertyValue Property="NonSortableProperties">
+							<Collection>
+								<PropertyPath>cfop_fc</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZFCI_CDS_CFOPREV_CDS/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZFCI_CDS_CFOPREV_CDS/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

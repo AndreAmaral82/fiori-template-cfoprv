@@ -1,0 +1,43 @@
+{
+	"fileName": "id_1594927781951_53_propertyChange",
+	"fileType": "change",
+	"changeType": "propertyChange",
+	"moduleName": "",
+	"reference": "itsgrp.com.zui5_fci_cfoprv.Component",
+	"packageName": "$TMP",
+	"content": {
+		"property": "icon",
+		"newValue": "sap-icon://add"
+	},
+	"selector": {
+		"id": "itsgrp.com.zui5_fci_cfoprv::sap.suite.ui.generic.template.ListReport.view.ListReport::ZFCI_CDS_CFOPREV--addEntry",
+		"type": "sap.m.Button",
+		"idIsLocal": false
+	},
+	"layer": "CUSTOMER_BASE",
+	"texts": {},
+	"namespace": "apps/itsgrp.com.zui5_fci_cfoprv/changes/",
+	"projectId": "itsgrp.com.zui5_fci_cfoprv",
+	"creation": "2020-07-16T19:30:21.831Z",
+	"originalLanguage": "PT",
+	"conditions": {},
+	"context": "",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": "",
+		"sapui5Version": "1.71.18",
+		"sourceChangeFileName": "",
+		"compositeCommand": ""
+	},
+	"oDataInformation": {},
+	"dependentSelector": {},
+	"validAppVersions": {
+		"creation": "1.0.0",
+		"from": "1.0.0",
+		"to": "1.0.0"
+	},
+	"jsOnly": false,
+	"variantReference": "",
+	"appDescriptorChange": false
+}
